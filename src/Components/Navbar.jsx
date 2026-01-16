@@ -1,7 +1,14 @@
+'use client'
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
+import NavLink from './NavLink';
 
 const Navbar = () => {
+  const pathName= usePathname();
+  console.log('pathName', pathName);
+  if(pathName.startsWith('/dashboard')) return <></>;
+
     return (
     
     <div className="navbar bg-base-100 shadow-sm">
@@ -13,37 +20,37 @@ const Navbar = () => {
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><Link href={'/tutorials'}>Tutorials</Link></li>
+        <li><NavLink href={'/tutorials'}>Tutorials</NavLink></li>
         <li>
           <a>About</a>
           <ul className="p-2">
-           <li><Link href={'/about'}>About Us</Link></li>
-           <li><Link href={'/about/contact'}>Contact</Link></li>
-           <li><Link href={'/about/teams'}>Teams</Link></li>
+           <li><NavLink href={'/about'}>About Us</NavLink></li>
+           <li><NavLink href={'/about/contact'}>Contact</NavLink></li>
+           <li><NavLink href={'/about/teams'}>Teams</NavLink></li>
           </ul>
         </li>
-        <li><Link href={'/stories'}>Stories</Link></li>
+        <li><NavLink href={'/stories'}>Stories</NavLink></li>
       </ul>
     </div>
     <Link href={'/'} className="btn btn-ghost text-xl">FirstNext</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-     <li><Link href={'/tutorials'}>Tutorials</Link></li>
+     <li><NavLink href={'/tutorials'}>Tutorials</NavLink></li>
       
       <li>
         <details>
           <summary>About</summary>
           <ul className="p-2 bg-base-100 w-40 z-1">
-           <li><Link href={'/about'}>About Us</Link></li>
-           <li><Link href={'/about/contact'}>Contact</Link></li>
-           <li><Link href={'/about/teams'}>Teams</Link></li>
+           <li><NavLink href={'/about'}>About Us</NavLink></li>
+           <li><NavLink href={'/about/contact'}>Contact</NavLink></li>
+           <li><NavLink href={'/about/teams'}>Teams</NavLink></li>
           </ul>
         </details>
       </li>
-      <li><Link href={'/stories'}>Stories</Link></li>
-      <li><Link href={'/login'}>Login</Link></li>
-      <li><Link href={'/register'}>Register</Link></li>
+      <li><NavLink href={'/stories'}>Stories</NavLink></li>
+      <li><NavLink href={'/login'}>Login</NavLink></li>
+      <li><NavLink href={'/register'}>Register</NavLink></li>
     </ul>
   </div>
   <div className="navbar-end">
